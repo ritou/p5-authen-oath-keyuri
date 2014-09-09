@@ -9,4 +9,4 @@ perl:
   - "5.20"
 install:
     - cpanm -v --installdeps --notest .
-script: "perl Build.PL && ./Build test"
+script: "perl Build.PL && ./Build build &&./Build test"
