@@ -1,14 +1,38 @@
 # NAME
 
-Authen::OATH::KeyURI - It's new $module
+Authen::OATH::KeyURI - Key URI generator for mobile multi factor authenticator app
 
 # SYNOPSIS
 
     use Authen::OATH::KeyURI;
 
+    # constructor
+    my $keyURI = Authen::OATH::KeyURI->new(
+        ## required params
+        accountname => q{alice@gmail.com},
+        secret       => q{example secret}, # raw secret
+        issuer      => q{Example},
+        ## optional params
+        # scheme      => q{otpauth},
+        # type        => q{totp},
+        # algorithm   => q{SHA1},
+        # digits      => 6,
+        # counter     => 1,
+        # period      => 30,
+    );
+
+    # output
+    # format : otpauth://TYPE/LABEL?PARAMETERS
+    print $keyURI->as_string();
+    # otpauth://totp/Example:alice@google.com?secret=MV4GC3LQNRSSA43FMNZGK5A=&issuer=Example
+
 # DESCRIPTION
 
-Authen::OATH::KeyURI is ...
+Authen::OATH::KeyURI generates a setting URL for software OTP authenticator.
+
+Please refer to a document of Google for the details of parameter.
+
+[https://code.google.com/p/google-authenticator/wiki/KeyUriFormat](https://code.google.com/p/google-authenticator/wiki/KeyUriFormat)
 
 # LICENSE
 

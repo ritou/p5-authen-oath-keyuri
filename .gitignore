@@ -28,3 +28,5 @@ cover_db/
 MYMETA.*
 
 /Authen-OATH-KeyURI-*
+
+cpanfile.snapshot

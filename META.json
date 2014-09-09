@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Key URI generator for mobile multi factor authenticator app",
    "author" : [
       "ritou <ritou.06@gmail.com>"
    ],
@@ -42,6 +42,10 @@
       },
       "runtime" : {
          "requires" : {
+            "Class::Accessor::Fast" : "0.34",
+            "Convert::Base32" : "0.06",
+            "Params::Validate" : "1.13",
+            "URI" : "1.64",
             "perl" : "5.008001"
          }
       },
@@ -52,5 +56,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ritou/p5-authen-oath-keyuri/issues"
+      },
+      "homepage" : "https://github.com/ritou/p5-authen-oath-keyuri",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ritou/p5-authen-oath-keyuri.git",
+         "web" : "https://github.com/ritou/p5-authen-oath-keyuri"
+      }
+   },
    "version" : "0.01"
 }
