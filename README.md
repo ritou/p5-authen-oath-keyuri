@@ -24,7 +24,21 @@ Authen::OATH::KeyURI - Key URI generator for mobile multi factor authenticator a
     # output
     # format : otpauth://TYPE/LABEL?PARAMETERS
     print $keyURI->as_string();
-    # otpauth://totp/Example:alice@google.com?secret=MV4GC3LQNRSSA43FMNZGK5A=&issuer=Example
+    # otpauth://totp/Example:alice@google.com?secret=mv4gc3lqnrssa43fmnzgk5a&issuer=Example
+
+    # constructor with encoded secret
+    my $keyURI = Authen::OATH::KeyURI->new(
+        ## required params
+        accountname => q{alice@gmail.com},
+        secret       => q{mv4gc3lqnrssa43fmnzgk5a}, # base32 encoded secret
+        issuer      => q{Example},
+        is_encoded  => 1,
+    );
+
+    # output
+    # format : otpauth://TYPE/LABEL?PARAMETERS
+    print $keyURI->as_string();
+    # otpauth://totp/Example:alice@google.com?secret=mv4gc3lqnrssa43fmnzgk5a&issuer=Example
 
 # DESCRIPTION
 
