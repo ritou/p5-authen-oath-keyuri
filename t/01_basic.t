@@ -83,4 +83,23 @@ subtest 'different scheme' => sub {
     is($keyURI->as_uri->as_string, $keyURI->as_string, q{as_uri});
 };
 
+subtest 'secret encoding' => sub {
+    my $keyURI = Authen::OATH::KeyURI->new(
+        accountname => q{alice@google.com},
+        secret      => q{example secret},
+    );
+    ok($keyURI, q{constructor});
+    is($keyURI->as_string, q{otpauth://totp/alice@google.com?secret=mv4gc3lqnrssa43fmnzgk5a}, q{as_string});
+    isa_ok($keyURI->as_uri, q{URI});
+    is($keyURI->as_uri->as_string, $keyURI->as_string, q{as_uri});
+
+    my $keyURI_w_encoded_secret = Authen::OATH::KeyURI->new(
+        accountname => q{alice@google.com},
+        secret      => q{mv4gc3lqnrssa43fmnzgk5a},
+        is_encoded  => 1,
+    );
+    ok($keyURI_w_encoded_secret, q{constructor});
+    is_deeply($keyURI_w_encoded_secret->as_uri, $keyURI->as_uri, q{secret encoding});
+};
+
 done_testing;
