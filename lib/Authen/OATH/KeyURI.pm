@@ -106,7 +106,8 @@ sub _generate_uri {
         ($self->issuer) ? 
             $self->issuer . q{:} . $self->accountname :
             $self->accountname;
-    $uri->path(q{//} . $self->type . q{/} . $label);
+    $uri->authority($self->type);
+    $uri->path($label);
 
     # 3. Parameters
     my $params = {
